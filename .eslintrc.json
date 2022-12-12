@@ -33,7 +33,6 @@
         "@angular-eslint/prefer-on-push-component-change-detection": "warn",
         "@angular-eslint/use-lifecycle-interface": "error",
         "@angular-eslint/use-pipe-transform-interface": "error",
-        "@typescript-eslint/explicit-function-return-type": "warn",
         "@typescript-eslint/indent": [
           "warn",
           2,
@@ -86,6 +85,25 @@
               ["^\\."] // relative imports
             ]
           }
+        ],
+        "@typescript-eslint/padding-line-between-statements": [
+          "warn",
+          // line before/after interfaces
+          { "blankLine": "always", "prev": "*",  "next":  "interface" },
+          { "blankLine": "always", "prev": "interface", "next":  "*" },
+          // ignore blank lines after/before require, as handled with eslint/import
+          { "blankLine": "any", "prev": "require", "next": "*" },
+          { "blankLine": "any",  "prev": "*", "next": "require" },
+          // line before return
+          { "blankLine": "always", "prev": "*", "next": "return" },
+          // line before/after/between variables
+          { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*" },
+          { "blankLine": "always", "prev": "*", "next": ["const", "let", "var"] },
+          { "blankLine": "never", "prev": ["const", "let", "var"], "next": ["const", "let", "var"] },
+          // line before/after/between if
+          { "blankLine": "always", "prev": "*", "next": "if" },
+          { "blankLine": "always", "prev": "if", "next": "*" },
+          { "blankLine": "never", "prev": "if", "next": "if" }
         ]
       }
     },
